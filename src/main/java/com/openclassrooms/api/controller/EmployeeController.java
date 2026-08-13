@@ -1,6 +1,8 @@
 package com.openclassrooms.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.openclassrooms.api.service.EmployeeService;
@@ -37,5 +39,10 @@ public class EmployeeController {
     @GetMapping("/employees")
     public Iterable<Employee> getEmployees() {
         return employeeService.getEmployees();
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeService.saveEmployee(employee);
     }
 }
